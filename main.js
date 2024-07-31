@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    // Função para carregar tarefas do localStorage
     function loadTasks() {
         const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
         tasks.forEach(task => {
@@ -11,7 +10,6 @@ $(document).ready(function() {
         });
     }
 
-    // Função para salvar tarefas no localStorage
     function saveTasks() {
         const tasks = [];
         $('#task-list li').each(function() {
@@ -24,10 +22,8 @@ $(document).ready(function() {
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }
 
-    // Carregar tarefas ao inicializar a página
     loadTasks();
 
-    // Adicionar nova tarefa
     $('#task-form').submit(function(event) {
         event.preventDefault();
         const taskText = $('#task-input').val();
@@ -39,13 +35,11 @@ $(document).ready(function() {
         }
     });
 
-    // Alternar tarefa concluída
     $('#task-list').on('click', 'li', function() {
         $(this).toggleClass('completed');
         saveTasks();
     });
 
-    // Limpar campo de entrada ao clicar no botão Cancelar
     $('#btn-cancel').click(function() {
         $('#task-input').val('');
     });
